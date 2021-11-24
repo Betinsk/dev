@@ -14,7 +14,7 @@ model cliente {
 }
 
 model item {
-  id_item    Int      @id
+  id_item    Int      @id @default(autoincrement())
   valor      Float?
   id_produto Int?
   id_venda   Int?
@@ -30,12 +30,11 @@ model produto {
 }
 
 model venda {
-  id_venda     Int       @id
-  datacadastro DateTime? @db.Date
+  id_venda     Int       @id @default(autoincrement())
   frete        Float?
   total        Float?
   id_cliente   Int?
-  id_item      Int?
+  dataCadastro DateTime? @db.Date
   cliente      cliente?  @relation(fields: [id_cliente], references: [id_cliente], onDelete: NoAction, onUpdate: NoAction)
   item         item[]
 }
