@@ -14,6 +14,7 @@ export class VendaDto {
         this.total = total;
         this.id_cliente = id_cliente;
         this.itens = itens;
+        
     }
 
 }

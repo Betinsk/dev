@@ -9,7 +9,9 @@ export class VendaService {
   }
 
   async findAll(): Promise<any> {
+    // Trás todos itens de venda
     const vendas = await this.prisma.venda.findMany()
+    // Trás todos itens de itens
     const itens = await this.prisma.item.findMany()
     const vendasDto = []
     vendas.forEach(venda => {
@@ -41,7 +43,7 @@ export class VendaService {
                   
       }
     ) 
-    return new  VendaDto(venda.id_venda, venda.frete, venda.total, venda.id_cliente, items)
+    return new  VendaDto(venda.id_venda, venda.frete, venda.total, venda.id_cliente,items)
   }
 
 
