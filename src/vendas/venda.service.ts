@@ -8,11 +8,13 @@ export class VendaService {
   }
 
   async findAll(): Promise<any> {
+    // Trás todos itens de venda
     const vendas = await this.prisma.venda.findMany()
+    // Trás todos itens de itens
     const itens = await this.prisma.item.findMany()
     const vendasDto = []
     vendas.forEach(venda => {
-      let vendaObj = new VendaDto(venda.id_venda, venda.frete, venda.total, venda.id_cliente, null)
+      let vendaObj = new VendaDto(venda.id_venda, venda.frete, venda.total, venda.dataCadastro, venda.id_cliente, null)
       const itensObj = itens.filter(item => item.id_venda === venda.id_venda)
       vendaObj.itens = itensObj
       vendasDto.push(vendaObj)
@@ -41,7 +43,7 @@ export class VendaService {
 
       }
     ) 
-    return new  VendaDto(venda.id_venda, venda.frete, venda.total, venda.id_cliente, items)
+    return new  VendaDto(venda.id_venda, venda.frete, venda.total, venda.dataCadastro, venda.id_cliente,items)
   }
 
 
