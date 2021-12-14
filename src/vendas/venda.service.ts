@@ -28,11 +28,12 @@ export class VendaService {
           frete: createVenda.frete,
           total: createVenda.total,
           id_cliente: createVenda.id_cliente,
-          dataCadastro: createVenda.dataCadastro
+          dataCadastro: new Date()
         }
       }
     )
       createVenda.itens.forEach(item => item.id_venda = venda.id_venda)
+      console.log(createVenda)
     const items = await this.prisma.item.createMany(
       {
         data: createVenda.itens,
