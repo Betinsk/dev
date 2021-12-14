@@ -1,6 +1,5 @@
-
 import { Body, Injectable } from '@nestjs/common';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { PrismaService } from 'src/prisma.service';
 import { VendaDto } from './dto/vendaDto';
 
 @Injectable()
@@ -38,7 +37,7 @@ export class VendaService {
       {
         data: createVenda.itens,
         skipDuplicates: false
-                  
+
       }
     ) 
     return new  VendaDto(venda.id_venda, venda.frete, venda.total, venda.id_cliente, items)

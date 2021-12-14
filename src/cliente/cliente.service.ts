@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from '../prisma/prisma.service';
+import { PrismaService } from '../prisma.service';
 
 
 @Injectable()
@@ -10,6 +10,6 @@ export class ClienteService {
 
   async getAll(): Promise<any>{
     return this.prisma.cliente.findMany();
-     
   }
 }
+
